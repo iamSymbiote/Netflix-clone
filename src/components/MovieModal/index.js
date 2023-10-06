@@ -33,7 +33,7 @@ const MovieModal = ({backdrop_path,title,overview,name,release_date,first_air_da
         <div className="presentation" role="presentation">
             <div className="wrapper-modal">
                 <div className="modal">
-                    <span onClick={()=>setModalVisibility(false)}className="modal-close"><CancelIcon/></span>
+                    <span onClick={()=>setModalVisibility(false)} className="modal-close"><CancelIcon/></span>
                     {trailerUrl ? <Youtube videoId={trailerUrl} opts={opts}/> :                     
                         (<img alt={title}
                         className="modal__poster-img"
