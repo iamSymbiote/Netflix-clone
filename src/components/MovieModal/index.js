@@ -14,7 +14,7 @@ const MovieModal = ({backdrop_path,title,overview,name,release_date,first_air_da
             autoplay : 1,
         },
     }
-    const randomPorcentaje = ()=>{
+    const randomPercentage = ()=>{
         return Math.floor(Math.random() * 100);
     }
     useEffect(() => {
@@ -27,7 +27,7 @@ const MovieModal = ({backdrop_path,title,overview,name,release_date,first_air_da
                 setTrailerUrl(urlParams.get('v'));
             }).catch(error => console.log(error))
         }
-    }, [])
+    }, [name, title, trailerUrl])
     
     return (
         <div className="presentation" role="presentation">
@@ -35,13 +35,13 @@ const MovieModal = ({backdrop_path,title,overview,name,release_date,first_air_da
                 <div className="modal">
                     <span onClick={()=>setModalVisibility(false)}className="modal-close"><CancelIcon/></span>
                     {trailerUrl ? <Youtube videoId={trailerUrl} opts={opts}/> :                     
-                        (<img
+                        (<img alt={title}
                         className="modal__poster-img"
                         src={`${base_url}${backdrop_path}`}
                     />)}
 
                     <div className="modal__content">
-                        <p className="modal__details"><span className="modal__user-perc">{randomPorcentaje()}% for you</span> {release_date ? release_date : first_air_date}</p>
+                        <p className="modal__details"><span className="modal__user-perc">{randomPercentage()}% for you</span> {release_date ? release_date : first_air_date}</p>
                         <h2 className="modal__title">{title ? title : name}</h2>
                         <p className="modal__overview">{overview}</p>
                         <p className="modal__overview">Vote Average: {vote_average}</p>
